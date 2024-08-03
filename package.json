@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
   }
 }
