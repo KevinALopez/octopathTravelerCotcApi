@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/KevinALopez/octopathTravelerCotCAPI/issues"
   },
-  "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme"
+  "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
