@@ -1,29 +1,29 @@
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
+// const mongodb = require("mongodb");
+// const MongoClient = mongodb.MongoClient;
+require("dotenv").config();
+const mongoose = require("mongoose");
 
 let _db;
 
-const mongoConnect = (callback) => {
-    MongoClient.connect(
-        "mongodb+srv://restfulAPI:lRsUJEuhVhGtN9KP@octopathtravelercotcjp.0zbmmda.mongodb.net/?retryWrites=true&w=majority&appName=OctopathTravelerCOTCJP"
-    )
-        .then((client) => {
-            console.log("Connected!");
-            _db = client.db();
-            callback();
-        })
-        .catch((err) => {
-            console.log(err);
-            throw err;
-        });
+const intializeDbConnection = (callback) => {
+    mongoose.connect(process.env.DATABASE_URL, { dbName: process.env.DBNAME });
+    _db = mongoose.connection;
+    _db.on("error", (error) => {
+        console.error(error);
+    });
+    _db.once("open", () => {
+        console.log("Connected to Database.");
+        callback();
+    });
 };
 
 const getDb = () => {
     if (_db) {
         return _db;
+    } else {
+        throw "No connection found!";
     }
-    throw "No database found!";
 };
 
-exports.mongoConnect = mongoConnect;
 exports.getDb = getDb;
+exports.intializeDbConnection = intializeDbConnection;

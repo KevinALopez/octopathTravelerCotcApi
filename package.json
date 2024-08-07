@@ -1,27 +1,32 @@
 {
-  "name": "cotcrestfulapi",
-  "version": "1.0.0",
-  "description": "Restful API for the octopath traveler champions of the continent unit,equips and enemy data.",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KevinALopez/octopathTravelerCotCAPI.git"
-  },
-  "keywords": [
-    "[\"api\"",
-    "\"cotc\"]"
-  ],
-  "author": "Kevin Ayala",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KevinALopez/octopathTravelerCotCAPI/issues"
-  },
-  "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme",
-  "dependencies": {
-    "express": "^4.19.2",
-    "mongodb": "^6.8.0"
-  }
+    "name": "cotcrestfulapi",
+    "version": "1.0.0",
+    "description": "Restful API for the octopath traveler champions of the continent unit,equips and enemy data.",
+    "main": "index.js",
+    "scripts": {
+        "devStart": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KevinALopez/octopathTravelerCotCAPI.git"
+    },
+    "keywords": [
+        "[\"api\"",
+        "\"cotc\"]"
+    ],
+    "author": "Kevin Ayala",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KevinALopez/octopathTravelerCotCAPI/issues"
+    },
+    "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme",
+    "dependencies": {
+        "express": "^4.19.2",
+        "mongodb": "^6.8.0",
+        "mongoose": "^8.5.2"
+    },
+    "devDependencies": {
+        "dotenv": "^16.4.5",
+        "nodemon": "^3.1.4"
+    }
 }
