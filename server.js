@@ -6,8 +6,8 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-const unitsRouter = require("./routes/units");
-app.use("/units", unitsRouter);
+const units = require("./routes/units");
+app.use("/units", units.router);
 
 mongoConnect.intializeDbConnection(() => {
     app.listen(port, () => {

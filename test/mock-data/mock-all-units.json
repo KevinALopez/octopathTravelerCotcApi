@@ -1,0 +1,622 @@
+[
+    {
+        "name": "extatloch",
+        "class": "thief",
+        "influence": "power",
+        "baseClass": "5star",
+        "hasTp": true,
+        "hasSixStar": true,
+        "stats": [
+            {
+                "level": 100,
+                "hp": 0,
+                "sp": 0,
+                "physicalAttack": 0,
+                "physicalDefense": 0,
+                "magicAttack": 0,
+                "magicDefense": 0,
+                "crit": 0,
+                "speed": 0
+            },
+            {
+                "level": 120,
+                "hp": 3712,
+                "sp": 502,
+                "physicalAttack": 318,
+                "physicalDefense": 303,
+                "magicAttack": 486,
+                "magicDefense": 322,
+                "crit": 368,
+                "speed": 433
+            }
+        ],
+        "resistances": [
+            {
+                "element": "light",
+                "value": 20
+            },
+            {
+                "element": "dark",
+                "value": 10
+            }
+        ],
+        "skills": [
+            {
+                "unlockAt": "base",
+                "description": "2x single-target Dark, also hits Dagger weakness (2x 90~180 Power)",
+                "spCost": 31,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "single-target"]
+            },
+            {
+                "unlockAt": "base",
+                "description": "1x AoE Dark, also hits Dagger weakness (1x 150~260 Power)",
+                "spCost": 35,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["single-hit", "AoE"]
+            },
+            {
+                "unlockAt": "1star",
+                "description": "AoE 15% MDef Down for 2-5 turns, based on Boost Lv. + Inflict Dark Weakness Implant for 3 hits",
+                "spCost": 29,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "stacking": "active",
+                    "statsDebuffed": [
+                        {
+                            "stat": "magicalDefense",
+                            "potency": 15
+                        }
+                    ],
+                    "effects": ["darkImplant"]
+                },
+                "tags": ["debuff", "magicalDefense", "AoE", "darkImplant"]
+            },
+            {
+                "unlockAt": "2star",
+                "description": "3x random-target Dark, also hits Dagger weakness, inflict 15% Dark Res Down for 2 turns per hit (3x 65~120 Power)",
+                "spCost": 54,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage", "debuff"],
+                    "stacking": "active",
+                    "statsDebuffed": [
+                        {
+                            "stat": "darkResistance",
+                            "potency": 15
+                        }
+                    ]
+                },
+                "tags": [
+                    "multi-hit",
+                    "random-target",
+                    "debuff",
+                    "darkResistance"
+                ]
+            },
+            {
+                "unlockAt": "2star",
+                "description": "All Allies 20% Mag Up and 20% Dark Damage Up for 2-5 turns, based on Boost Lv.",
+                "spCost": 68,
+                "skillInfo": {
+                    "type": ["buff"],
+                    "stacking": "active",
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 20
+                        },
+                        {
+                            "stat": "darkDamage",
+                            "potency": 20
+                        }
+                    ]
+                },
+                "tags": ["buff", "All", "magicalAttack", "darkDamage"]
+            },
+            {
+                "unlockAt": "3star",
+                "description": "[Priority] Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then swap to Back Row",
+                "spCost": 46,
+                "level88SpCost": 37,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "effects": ["darkImplant", "self-priority"]
+                },
+                "tags": ["debuff", "AoE", "darkImplant", "priority"]
+            },
+            {
+                "unlockAt": "4star",
+                "description": "2x AoE Dark, also hits Dagger weakness, if Boost MAX, 4 hits instead (2~4x 95~110 Power)",
+                "spCost": 53,
+                "level96SpCost": 42,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "AoE"]
+            },
+            {
+                "unlockAt": "5star",
+                "description": "5x random-target Dark, also hits Dagger weakness (6x 30~60 Power)",
+                "has6starUpgrade": true,
+                "upgrade": "Changed to 6 hits",
+                "spCost": 49,
+                "level99SpCost": 39,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "random-target"]
+            },
+            {
+                "unlockAt": "5star",
+                "description": "Single-Enemy Dark Weakness Implant for 3 hits, then 3x single-target Dark (3x 95~160 Power).If Boost MAX, repeat this attack once.",
+                "spCost": 87,
+                "level100SpCost": 70,
+                "weaknessExploited": ["dark"],
+                "skillInfo": {
+                    "type": ["damage", "debuff"],
+                    "effects": ["darkImplant"]
+                },
+                "tags": ["multi-hit", "single-target", "darkImplant"]
+            },
+            {
+                "unlockAt": "TP",
+                "description": "Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then All Allies gain [Priority] for next turn, then swap to Back Row",
+                "spCost": 42,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "effects": ["darkImplant", "all-priority"]
+                },
+                "tags": ["debuff", "darkImplant", "priority"]
+            },
+            {
+                "unlockAt": "6star",
+                "description": "[Priority] Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then Frontrow 20% Mag Up and 30% Dark Damage Up and 30000 Damage Cap Up for 2 turns",
+                "conditionToUse": "After using special",
+                "numberOfUses": 2,
+                "skillInfo": {
+                    "type": ["buff", "debuff"],
+                    "stacking": "active",
+                    "effects": ["darkImplant", "self-priority"],
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 20
+                        },
+                        {
+                            "stat": "darkDamage",
+                            "potency": 30
+                        },
+                        {
+                            "stat": "damageCapUp",
+                            "potency": 30000
+                        }
+                    ]
+                },
+                "tags": [
+                    "debuff",
+                    "buff",
+                    "AoE",
+                    "frontrow",
+                    "magicalAttack",
+                    "darkDamage",
+                    "damageCapUp"
+                ]
+            }
+        ],
+        "special": {
+            "description": {
+                "level1": "8x random-target Dark, also hits Dagger weakness, Low chance to inflict 10% Dark Res Down for 1 turn per hit (8x 45 Power)",
+                "level10": "8x random-target Dark, also hits Dagger weakness, Low chance to inflict 15% Dark Res Down for 1 turn per hit (8x 55 Power)"
+            },
+            "weaknessExploited": ["dark", "dagger"],
+            "type": ["damage", "debuff"],
+            "stacking": "special",
+            "statsDebuffed": [
+                {
+                    "stat": "darkResistance",
+                    "potency": {
+                        "level1": 10,
+                        "level10": 15
+                    }
+                }
+            ],
+            "tags": ["multi-hit", "random-target", "debuff", "darkResistance"]
+        },
+        "passives": [
+            {
+                "unlockAt": "1star",
+                "description": "Upon switching to Back Row, Frontrow Allies shave 1 additional shield when hitting weakness with Dark attacks for 2 turns",
+                "passiveInfo": {
+                    "type": ["buff"],
+                    "effects": ["addtionalShieldShaveDark"]
+                },
+                "tags": ["buff", "frontrow", "addtionalShieldShaveDark"]
+            },
+            {
+                "unlockAt": "3star",
+                "description": "While in Front Row, Frontrow Dark Damage Up Cap from Active and Passive/Equipment changed to 50% and 30000 Damage Cap Up",
+                "passiveInfo": {
+                    "type": ["buff"],
+                    "stacking": "passive",
+                    "statsBuffed": [
+                        {
+                            "stat": "activeDarkDamageCapUp",
+                            "potency": 50
+                        },
+                        {
+                            "stat": "passiveDarkDamageCapUp",
+                            "potency": 50
+                        },
+                        {
+                            "stat": "damageCapUp",
+                            "potency": 30000
+                        }
+                    ]
+                },
+                "tags": [
+                    "buff",
+                    "frontrow",
+                    "activeDarkDamageCapUp",
+                    "passiveDarkDamageCapUp",
+                    "damageCapUp"
+                ]
+            },
+            {
+                "unlockAt": "TP",
+                "description": "Self 15% Mag Up and 15% Dark Damage Up and gain Magic Critical Hit",
+                "passiveInfo": {
+                    "type": ["self-buff"],
+                    "stacking": "passive",
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 15
+                        },
+                        {
+                            "stat": "darkDamageUp",
+                            "potency": 15
+                        }
+                    ],
+                    "effects": ["magicalCrit"]
+                },
+                "tags": [
+                    "self-buff",
+                    "magicalAttack",
+                    "magicalCrit",
+                    "darkDamageUp"
+                ]
+            }
+        ],
+        "teamCapabilities": {
+            "debuff": ["darkResistance", "magicalDefense"],
+            "buff": [
+                "magicalAttack",
+                "darkDamageUp",
+                "damageCapUp",
+                "activeDarkDamageCapUp",
+                "passiveDarkDamageCapUp",
+                "addtionalShieldShaveDark",
+                "priority"
+            ]
+        }
+    },
+    {
+        "name": "extatloch",
+        "class": "thief",
+        "influence": "power",
+        "baseClass": "5star",
+        "hasTp": true,
+        "hasSixStar": true,
+        "stats": [
+            {
+                "level": 100,
+                "hp": 0,
+                "sp": 0,
+                "physicalAttack": 0,
+                "physicalDefense": 0,
+                "magicAttack": 0,
+                "magicDefense": 0,
+                "crit": 0,
+                "speed": 0
+            },
+            {
+                "level": 120,
+                "hp": 3712,
+                "sp": 502,
+                "physicalAttack": 318,
+                "physicalDefense": 303,
+                "magicAttack": 486,
+                "magicDefense": 322,
+                "crit": 368,
+                "speed": 433
+            }
+        ],
+        "resistances": [
+            {
+                "element": "light",
+                "value": 20
+            },
+            {
+                "element": "dark",
+                "value": 10
+            }
+        ],
+        "skills": [
+            {
+                "unlockAt": "base",
+                "description": "2x single-target Dark, also hits Dagger weakness (2x 90~180 Power)",
+                "spCost": 31,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "single-target"]
+            },
+            {
+                "unlockAt": "base",
+                "description": "1x AoE Dark, also hits Dagger weakness (1x 150~260 Power)",
+                "spCost": 35,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["single-hit", "AoE"]
+            },
+            {
+                "unlockAt": "1star",
+                "description": "AoE 15% MDef Down for 2-5 turns, based on Boost Lv. + Inflict Dark Weakness Implant for 3 hits",
+                "spCost": 29,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "stacking": "active",
+                    "statsDebuffed": [
+                        {
+                            "stat": "magicalDefense",
+                            "potency": 15
+                        }
+                    ],
+                    "effects": ["darkImplant"]
+                },
+                "tags": ["debuff", "magicalDefense", "AoE", "darkImplant"]
+            },
+            {
+                "unlockAt": "2star",
+                "description": "3x random-target Dark, also hits Dagger weakness, inflict 15% Dark Res Down for 2 turns per hit (3x 65~120 Power)",
+                "spCost": 54,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage", "debuff"],
+                    "stacking": "active",
+                    "statsDebuffed": [
+                        {
+                            "stat": "darkResistance",
+                            "potency": 15
+                        }
+                    ]
+                },
+                "tags": [
+                    "multi-hit",
+                    "random-target",
+                    "debuff",
+                    "darkResistance"
+                ]
+            },
+            {
+                "unlockAt": "2star",
+                "description": "All Allies 20% Mag Up and 20% Dark Damage Up for 2-5 turns, based on Boost Lv.",
+                "spCost": 68,
+                "skillInfo": {
+                    "type": ["buff"],
+                    "stacking": "active",
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 20
+                        },
+                        {
+                            "stat": "darkDamage",
+                            "potency": 20
+                        }
+                    ]
+                },
+                "tags": ["buff", "All", "magicalAttack", "darkDamage"]
+            },
+            {
+                "unlockAt": "3star",
+                "description": "[Priority] Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then swap to Back Row",
+                "spCost": 46,
+                "level88SpCost": 37,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "effects": ["darkImplant", "self-priority"]
+                },
+                "tags": ["debuff", "AoE", "darkImplant", "priority"]
+            },
+            {
+                "unlockAt": "4star",
+                "description": "2x AoE Dark, also hits Dagger weakness, if Boost MAX, 4 hits instead (2~4x 95~110 Power)",
+                "spCost": 53,
+                "level96SpCost": 42,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "AoE"]
+            },
+            {
+                "unlockAt": "5star",
+                "description": "5x random-target Dark, also hits Dagger weakness (6x 30~60 Power)",
+                "has6starUpgrade": true,
+                "upgrade": "Changed to 6 hits",
+                "spCost": 49,
+                "level99SpCost": 39,
+                "weaknessExploited": ["dark", "dagger"],
+                "skillInfo": {
+                    "type": ["damage"]
+                },
+                "tags": ["multi-hit", "random-target"]
+            },
+            {
+                "unlockAt": "5star",
+                "description": "Single-Enemy Dark Weakness Implant for 3 hits, then 3x single-target Dark (3x 95~160 Power).If Boost MAX, repeat this attack once.",
+                "spCost": 87,
+                "level100SpCost": 70,
+                "weaknessExploited": ["dark"],
+                "skillInfo": {
+                    "type": ["damage", "debuff"],
+                    "effects": ["darkImplant"]
+                },
+                "tags": ["multi-hit", "single-target", "darkImplant"]
+            },
+            {
+                "unlockAt": "TP",
+                "description": "Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then All Allies gain [Priority] for next turn, then swap to Back Row",
+                "spCost": 42,
+                "skillInfo": {
+                    "type": ["debuff"],
+                    "effects": ["darkImplant", "all-priority"]
+                },
+                "tags": ["debuff", "darkImplant", "priority"]
+            },
+            {
+                "unlockAt": "6star",
+                "description": "[Priority] Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then Frontrow 20% Mag Up and 30% Dark Damage Up and 30000 Damage Cap Up for 2 turns",
+                "conditionToUse": "After using special",
+                "numberOfUses": 2,
+                "skillInfo": {
+                    "type": ["buff", "debuff"],
+                    "stacking": "active",
+                    "effects": ["darkImplant", "self-priority"],
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 20
+                        },
+                        {
+                            "stat": "darkDamage",
+                            "potency": 30
+                        },
+                        {
+                            "stat": "damageCapUp",
+                            "potency": 30000
+                        }
+                    ]
+                },
+                "tags": [
+                    "debuff",
+                    "buff",
+                    "AoE",
+                    "frontrow",
+                    "magicalAttack",
+                    "darkDamage",
+                    "damageCapUp"
+                ]
+            }
+        ],
+        "special": {
+            "description": {
+                "level1": "8x random-target Dark, also hits Dagger weakness, Low chance to inflict 10% Dark Res Down for 1 turn per hit (8x 45 Power)",
+                "level10": "8x random-target Dark, also hits Dagger weakness, Low chance to inflict 15% Dark Res Down for 1 turn per hit (8x 55 Power)"
+            },
+            "weaknessExploited": ["dark", "dagger"],
+            "type": ["damage", "debuff"],
+            "stacking": "special",
+            "statsDebuffed": [
+                {
+                    "stat": "darkResistance",
+                    "potency": {
+                        "level1": 10,
+                        "level10": 15
+                    }
+                }
+            ],
+            "tags": ["multi-hit", "random-target", "debuff", "darkResistance"]
+        },
+        "passives": [
+            {
+                "unlockAt": "1star",
+                "description": "Upon switching to Back Row, Frontrow Allies shave 1 additional shield when hitting weakness with Dark attacks for 2 turns",
+                "passiveInfo": {
+                    "type": ["buff"],
+                    "effects": ["addtionalShieldShaveDark"]
+                },
+                "tags": ["buff", "frontrow", "addtionalShieldShaveDark"]
+            },
+            {
+                "unlockAt": "3star",
+                "description": "While in Front Row, Frontrow Dark Damage Up Cap from Active and Passive/Equipment changed to 50% and 30000 Damage Cap Up",
+                "passiveInfo": {
+                    "type": ["buff"],
+                    "stacking": "passive",
+                    "statsBuffed": [
+                        {
+                            "stat": "activeDarkDamageCapUp",
+                            "potency": 50
+                        },
+                        {
+                            "stat": "passiveDarkDamageCapUp",
+                            "potency": 50
+                        },
+                        {
+                            "stat": "damageCapUp",
+                            "potency": 30000
+                        }
+                    ]
+                },
+                "tags": [
+                    "buff",
+                    "frontrow",
+                    "activeDarkDamageCapUp",
+                    "passiveDarkDamageCapUp",
+                    "damageCapUp"
+                ]
+            },
+            {
+                "unlockAt": "TP",
+                "description": "Self 15% Mag Up and 15% Dark Damage Up and gain Magic Critical Hit",
+                "passiveInfo": {
+                    "type": ["self-buff"],
+                    "stacking": "passive",
+                    "statsBuffed": [
+                        {
+                            "stat": "magicalAttack",
+                            "potency": 15
+                        },
+                        {
+                            "stat": "darkDamageUp",
+                            "potency": 15
+                        }
+                    ],
+                    "effects": ["magicalCrit"]
+                },
+                "tags": [
+                    "self-buff",
+                    "magicalAttack",
+                    "magicalCrit",
+                    "darkDamageUp"
+                ]
+            }
+        ],
+        "teamCapabilities": {
+            "debuff": ["darkResistance", "magicalDefense"],
+            "buff": [
+                "magicalAttack",
+                "darkDamageUp",
+                "damageCapUp",
+                "activeDarkDamageCapUp",
+                "passiveDarkDamageCapUp",
+                "addtionalShieldShaveDark",
+                "priority"
+            ]
+        }
+    }
+]
