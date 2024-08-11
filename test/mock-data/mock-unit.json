@@ -139,7 +139,7 @@
         {
             "unlockAt": "5star",
             "description": "5x random-target Dark, also hits Dagger weakness (6x 30~60 Power)",
-            "has6starUpgrade": true,
+            "has6StarUpgrade": true,
             "upgrade": "Changed to 6 hits",
             "spCost": 49,
             "level99SpCost": 39,

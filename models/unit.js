@@ -214,9 +214,11 @@ const specialSchema = mongoose.Schema({
     },
     statsBuffed: {
         type: [statAffectedByUltLevelSchema],
+        default: undefined,
     },
     statsDebuffed: {
         type: [statAffectedByUltLevelSchema],
+        default: undefined,
     },
     tags: {
         type: [String],

@@ -3,7 +3,6 @@ const Unit = require("../../models/unit");
 const httpMocks = require("node-mocks-http");
 const unitData = require("../mock-data/mock-unit.json");
 const allUnitsData = require("../mock-data/mock-all-units.json");
-const unit = require("../../models/unit");
 
 jest.mock("../../models/unit");
 

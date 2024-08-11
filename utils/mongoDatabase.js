@@ -12,7 +12,7 @@ const intializeDbConnection = (callback) => {
         console.error(error);
     });
     _db.once("open", () => {
-        console.log("Connected to Database.");
+        console.log("Connected to database.");
         callback();
     });
 };
