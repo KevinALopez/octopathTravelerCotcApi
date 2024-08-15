@@ -1,5 +1,5 @@
 require("dotenv").config();
-const mongoDatabase = require("../../utils/mongoDatabase");
+const mongoDatabase = require("../../../utils/mongoDatabase");
 const mongoose = require("mongoose");
 
 describe("mongoDatabase.getDb", () => {

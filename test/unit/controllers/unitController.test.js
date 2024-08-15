@@ -1,10 +1,10 @@
-const unitController = require("../../controllers/unitController");
-const Unit = require("../../models/unit");
+const unitController = require("../../../controllers/unitController");
+const Unit = require("../../../models/unit");
 const httpMocks = require("node-mocks-http");
-const unitData = require("../mock-data/mock-unit.json");
-const allUnitsData = require("../mock-data/mock-all-units.json");
+const unitData = require("../../mock-data/mock-unit.json");
+const allUnitsData = require("../../mock-data/mock-all-units.json");
 
-jest.mock("../../models/unit");
+jest.mock("../../../models/unit");
 
 let req, res, next;
 beforeEach(() => {
