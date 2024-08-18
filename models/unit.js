@@ -290,6 +290,12 @@ const teamCapabilitiesSchema = mongoose.Schema({
 });
 
 const unitSchema = new mongoose.Schema({
+    splashArt: {
+        type: String,
+    },
+    pixelArt: {
+        type: String,
+    },
     name: {
         type: String,
         required: true,

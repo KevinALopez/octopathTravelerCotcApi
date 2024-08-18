@@ -16,6 +16,9 @@ app.use(
     })
 );
 
+const s3Bucket = require("./routes/s3.js");
+app.use("/s3", s3Bucket.router);
+
 const units = require("./routes/units");
 app.use("/units", units.router);
 

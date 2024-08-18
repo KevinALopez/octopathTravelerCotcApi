@@ -22,6 +22,8 @@
     },
     "homepage": "https://github.com/KevinALopez/octopathTravelerCotCAPI#readme",
     "dependencies": {
+        "@aws-sdk/client-s3": "^3.632.0",
+        "@aws-sdk/s3-request-presigner": "^3.633.0",
         "bcryptjs": "^2.4.3",
         "csrf-sync": "^4.0.3",
         "express": "^4.19.2",

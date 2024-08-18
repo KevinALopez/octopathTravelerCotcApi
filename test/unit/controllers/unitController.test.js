@@ -7,10 +7,43 @@ const allUnitsData = require("../../mock-data/mock-all-units.json");
 jest.mock("../../../models/unit");
 
 let req, res, next;
+let testUnitId;
+
 beforeEach(() => {
     req = httpMocks.createRequest();
     res = httpMocks.createResponse();
     next = jest.fn();
+});
+
+describe("unitController.createNewUnit", () => {
+    it("should be a function", () => {
+        expect(typeof unitController.getUnitById).toBe("function");
+    });
+    it("should create a new unit and send it as response", async () => {
+        req.body = unitData;
+        const saveSpy = jest.spyOn(Unit.prototype, "save");
+        saveSpy.mockImplementation(() => unitData);
+        await unitController.createNewUnit(req, res);
+        expect(Unit).toBeCalledWith(req.body);
+        expect(saveSpy).toBeCalled();
+        expect(res.statusCode).toBe(201);
+        expect(res._getJSONData()).toEqual(unitData);
+        expect(res._isEndCalled()).toBeTruthy();
+
+        testUnitId = res._getJSONData()._id;
+    });
+    it("should handle error on save execution and send error message", async () => {
+        req.body = unitData;
+        const rejectedPromise = Promise.reject({ message: "Error" });
+        const saveSpy = jest.spyOn(Unit.prototype, "save");
+        saveSpy.mockImplementation(() => rejectedPromise);
+        await unitController.createNewUnit(req, res);
+        expect(Unit).toBeCalledWith(req.body);
+        expect(saveSpy).toBeCalled();
+        expect(res.statusCode).toBe(500);
+        expect(res._getJSONData()).toEqual({ message: "Error" });
+        expect(res._isEndCalled()).toBeTruthy();
+    });
 });
 
 describe("unitController.getUnitById", () => {
@@ -18,7 +51,7 @@ describe("unitController.getUnitById", () => {
         expect(typeof unitController.getUnitById).toBe("function");
     });
     it("should call the method Unit.findById", async () => {
-        req.params.id = "66b38a35f1a948bf5f918042";
+        req.params.id = testUnitId;
         Unit.findById.mockReturnValue(unitData);
         await unitController.getUnitById(req, res, next);
         expect(Unit.findById).toBeCalledWith(req.params.id);
@@ -63,35 +96,6 @@ describe("unitController.getAllUnits", () => {
     });
 });
 
-describe("unitController.createNewUnit", () => {
-    it("should be a function", () => {
-        expect(typeof unitController.getUnitById).toBe("function");
-    });
-    it("should create a new unit and send it as response", async () => {
-        req.body = unitData;
-        const saveSpy = jest.spyOn(Unit.prototype, "save");
-        saveSpy.mockImplementation(() => unitData);
-        await unitController.createNewUnit(req, res);
-        expect(Unit).toBeCalledWith(req.body);
-        expect(saveSpy).toBeCalled();
-        expect(res.statusCode).toBe(201);
-        expect(res._getJSONData()).toEqual(unitData);
-        expect(res._isEndCalled()).toBeTruthy();
-    });
-    it("should handle error on save execution and send error message", async () => {
-        req.body = unitData;
-        const rejectedPromise = Promise.reject({ message: "Error" });
-        const saveSpy = jest.spyOn(Unit.prototype, "save");
-        saveSpy.mockImplementation(() => rejectedPromise);
-        await unitController.createNewUnit(req, res);
-        expect(Unit).toBeCalledWith(req.body);
-        expect(saveSpy).toBeCalled();
-        expect(res.statusCode).toBe(500);
-        expect(res._getJSONData()).toEqual({ message: "Error" });
-        expect(res._isEndCalled()).toBeTruthy();
-    });
-});
-
 describe("unitController.updateUnit", () => {
     it("should be a function", () => {
         expect(typeof unitController.getUnitById).toBe("function");
@@ -128,6 +132,7 @@ describe("unitController.deleteOne", () => {
     });
     it("should delete a unit and send a succesful response back", async () => {
         res.unit = new Unit(unitData);
+        res.unit._id = testUnitId;
         await unitController.deleteUnit(res);
         expect(Unit.deleteOne).toBeCalledWith({ _id: res.unit._id });
         expect(res.statusCode).toBe(200);
