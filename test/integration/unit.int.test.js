@@ -5,14 +5,12 @@ const newUnitData = require("../mock-data/mock-unit.json");
 const { default: mongoose } = require("mongoose");
 
 const endpointUrl = "/units/";
-let authSession;
 let testSession;
 let mockUnitId;
 
 beforeAll(async () => {
     testSession = session(server);
-    authSession = session(server);
-    await authSession.post("/users/login").send({
+    await testSession.post("/users/login").send({
         email: process.env.TESTUSER,
         password: process.env.TESTPASSWORD,
     });
@@ -25,17 +23,10 @@ afterAll(async () => {
 
 describe(endpointUrl, () => {
     it(`successful request POST ${endpointUrl}`, async () => {
-        const response = await authSession.post(endpointUrl).send(newUnitData);
+        const response = await testSession.post(endpointUrl).send(newUnitData);
         expect(response.statusCode).toBe(201);
         expect(response.body).toMatchObject(newUnitData);
         mockUnitId = response.body._id;
-    }, 10000);
-    it(`validation error on POST ${endpointUrl}`, async () => {
-        const response = await authSession
-            .post(endpointUrl)
-            .send({ Error: "oops" });
-        expect(response.statusCode).toBe(500);
-        expect(response.body.message).toMatch(/unit validation failed/);
     }, 10000);
     it(`succesful request on GET ${endpointUrl}`, async () => {
         const response = await testSession.get(endpointUrl);
@@ -63,15 +54,22 @@ describe(endpointUrl, () => {
         expect(response.statusCode).toBe(500);
         expect(response.body.message).toMatch(/Cast to ObjectId failed/);
     });
+    it(`validation error on POST ${endpointUrl}`, async () => {
+        const response = await testSession
+            .post(endpointUrl)
+            .send({ Error: "oops" });
+        expect(response.statusCode).toBe(500);
+        expect(response.body.message).toMatch(/unit validation failed/);
+    }, 10000);
     it(`succesful request on PATCH ${endpointUrl}:id`, async () => {
-        const response = await authSession
+        const response = await testSession
             .patch(`${endpointUrl}${mockUnitId}`)
             .send({ name: "updatedName" });
         expect(response.statusCode).toBe(200);
         expect(response.body).toMatchObject({ name: "updatedName" });
     });
     it(`succesful request on DELETE ${endpointUrl}:id`, async () => {
-        const response = await authSession.delete(
+        const response = await testSession.delete(
             `${endpointUrl}${mockUnitId}`
         );
         expect(response.statusCode).toBe(200);
