@@ -27,4 +27,5 @@ jobs:
                   SESSIONSECRET: ${{ secrets.SESSIONSECRET }}
                   TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
                   TESTUSER: ${{ secrets.TESTUSER }}
+                  PORT: 0
               run: npm test
