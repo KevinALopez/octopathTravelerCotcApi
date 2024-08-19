@@ -13,7 +13,7 @@ const intializeDbConnection = (callback) => {
     });
     _db.once("open", () => {
         console.log("Connected to database.");
-        return callback();
+        callback();
     });
 };
 
