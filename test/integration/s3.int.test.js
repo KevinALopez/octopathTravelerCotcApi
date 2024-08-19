@@ -16,7 +16,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await authSession.get(endpointUrl + "logout");
-    mongoose.connection.close();
+    await mongoose.connection.close();
 });
 
 describe(endpointUrl, () => {

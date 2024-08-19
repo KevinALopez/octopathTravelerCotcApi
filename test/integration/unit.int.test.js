@@ -20,7 +20,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await testSession.get(endpointUrl + "logout");
-    mongoose.connection.close();
+    await mongoose.connection.close();
 });
 
 describe(endpointUrl, () => {

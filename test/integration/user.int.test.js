@@ -14,7 +14,7 @@ beforeAll((done) => {
 
 afterAll(async () => {
     await User.findOneAndDelete({ email: intTestUser.email });
-    mongoose.connection.close();
+    await mongoose.connection.close();
 });
 
 describe(endpointUrl, () => {
