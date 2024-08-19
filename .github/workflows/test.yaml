@@ -1,0 +1,30 @@
+name: run tests
+
+on:
+    push:
+        branches: ["main"]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "npm"
+            - run: npm ci
+            - name: run tests
+              env:
+                  AWSACCESS: ${{ secrets.AWSACCESS }}
+                  AWSREGION: ${{ secrets.AWSREGION }}
+                  AWSSECRET: ${{ secrets.AWSSECRET }}
+                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+                  DBNAME: ${{ secrets.DBNAME }}
+                  S3BUCKETNAME: ${{ secrets.S3BUCKETNAME }}
+                  SESSIONSECRET: ${{ secrets.SESSIONSECRET }}
+                  TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
+                  TESTUSER: ${{ secrets.TESTUSER }}
+              run: npm test
