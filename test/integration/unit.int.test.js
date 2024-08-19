@@ -9,7 +9,7 @@ let testSession;
 let mockUnitId;
 
 beforeAll(async () => {
-    testSession = session(server);
+    testSession = session(server.app);
     await testSession.post("/users/login").send({
         email: process.env.TESTUSER,
         password: process.env.TESTPASSWORD,
@@ -19,6 +19,7 @@ beforeAll(async () => {
 afterAll(async () => {
     await testSession.get(endpointUrl + "logout");
     await mongoose.connection.close();
+    server.appServer.close();
 });
 
 describe(endpointUrl, () => {
@@ -34,7 +35,7 @@ describe(endpointUrl, () => {
         response.body.forEach((unit) => {
             expect(unit).toMatchObject({});
         });
-    }, 10000);
+    });
     it(`succesful request on GET ${endpointUrl}:id`, async () => {
         const response = await testSession.get(`${endpointUrl}${mockUnitId}`);
         console.log(response.body);

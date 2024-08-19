@@ -7,16 +7,17 @@ const endpointUrl = "/s3/";
 let authSession;
 
 beforeAll(async () => {
-    authSession = session(server);
+    authSession = session(server.app);
     await authSession.post("/users/login").send({
         email: process.env.TESTUSER,
         password: process.env.TESTPASSWORD,
     });
-}, 10000);
+}, 15000);
 
 afterAll(async () => {
     await authSession.get(endpointUrl + "logout");
     await mongoose.connection.close();
+    server.appServer.close();
 });
 
 describe(endpointUrl, () => {

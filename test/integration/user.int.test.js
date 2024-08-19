@@ -8,13 +8,14 @@ const endpointUrl = "/users/";
 let testSession = null;
 
 beforeAll((done) => {
-    testSession = session(server);
+    testSession = session(server.app);
     done();
 });
 
 afterAll(async () => {
     await User.findOneAndDelete({ email: intTestUser.email });
     await mongoose.connection.close();
+    server.appServer.close();
 });
 
 describe(endpointUrl, () => {

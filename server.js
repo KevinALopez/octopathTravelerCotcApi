@@ -25,10 +25,10 @@ app.use("/units", units.router);
 const users = require("./routes/users");
 app.use("/users", users.router);
 
-mongoConnect.intializeDbConnection(() => {
-    app.listen(port, () => {
-        console.log(`Server listening on port ${port}`);
-    });
+mongoConnect.intializeDbConnection(() => {});
+
+const appServer = app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
 });
 
-module.exports = app;
+module.exports = { app, appServer };
