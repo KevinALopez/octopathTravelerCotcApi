@@ -28,4 +28,17 @@ jobs:
                   TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
                   TESTUSER: ${{ secrets.TESTUSER }}
                   PORT: 0
-              run: npm test
+            - run: npm test
+    Deployment:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Connect to ec2 instance
+              run: |
+                  echo $SECRETSSHKEY > private-key.pem
+                  chmod 400 private-key.pem
+                  ssh -i private-key.pem $SSH_USER@$SSH_HOST
+                  ls
+              env:
+                  SECRETSSHKEY: ${{ secrets.SECRETSSHKEY }}
+                  SSH_USER: ${{ secrets.SSH_USER }}
+                  SSH_HOST: ${{ secrets.SSH_HOST }}
