@@ -35,6 +35,7 @@ jobs:
             - name: Connect to ec2 instance
               run: |
                   echo $SECRETSSHKEY > cotcRestfulApiKey.pem
+                  ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
                   ssh -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST
                   ls
               env:
