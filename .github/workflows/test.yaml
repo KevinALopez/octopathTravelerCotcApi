@@ -39,7 +39,10 @@ jobs:
                   username: ${{ secrets.SSH_USER }}
                   key: ${{ secrets.SECRETSSHKEY }}
                   port: 22
-                  script: ls
+                  script: |
+                      ls
+                      cd octopathTravelerCotcApi
+                      ls
             # - name: Connect to ec2 instance
             #   run: |
             #       echo $SECRETSSHKEY > cotcRestfulApiKey.pem
