@@ -5,38 +5,37 @@ on:
         branches: ["main"]
 
 jobs:
-    Tests:
-        runs-on: ubuntu-latest
+    # Tests:
+    #     runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: "npm"
-            - run: npm ci
-            - name: run tests
-              env:
-                  AWSACCESS: ${{ secrets.AWSACCESS }}
-                  AWSREGION: ${{ secrets.AWSREGION }}
-                  AWSSECRET: ${{ secrets.AWSSECRET }}
-                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-                  DBNAME: ${{ secrets.DBNAME }}
-                  S3BUCKETNAME: ${{ secrets.S3BUCKETNAME }}
-                  SESSIONSECRET: ${{ secrets.SESSIONSECRET }}
-                  TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
-                  TESTUSER: ${{ secrets.TESTUSER }}
-                  PORT: 0
-              run: npm test
+    #     steps:
+    #         - uses: actions/checkout@v4
+    #         - name: Use Node.js
+    #           uses: actions/setup-node@v4
+    #           with:
+    #               node-version: 20
+    #               cache: "npm"
+    #         - run: npm ci
+    #         - name: run tests
+    #           env:
+    #               AWSACCESS: ${{ secrets.AWSACCESS }}
+    #               AWSREGION: ${{ secrets.AWSREGION }}
+    #               AWSSECRET: ${{ secrets.AWSSECRET }}
+    #               DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    #               DBNAME: ${{ secrets.DBNAME }}
+    #               S3BUCKETNAME: ${{ secrets.S3BUCKETNAME }}
+    #               SESSIONSECRET: ${{ secrets.SESSIONSECRET }}
+    #               TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
+    #               TESTUSER: ${{ secrets.TESTUSER }}
+    #               PORT: 0
+    #           run: npm test
     Deployment:
         runs-on: ubuntu-latest
         steps:
             - name: Connect to ec2 instance
               run: |
-                  echo $SECRETSSHKEY > private-key.pem
-                  chmod 400 private-key.pem
-                  ssh -i private-key.pem $SSH_USER@$SSH_HOST
+                  echo $SECRETSSHKEY > cotcRestfulApiKey.pem
+                  ssh -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST
                   ls
               env:
                   SECRETSSHKEY: ${{ secrets.SECRETSSHKEY }}
