@@ -35,9 +35,10 @@ jobs:
             - name: Connect to ec2 instance
               run: |
                   echo $SECRETSSHKEY > cotcRestfulApiKey.pem
-                  ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-                  ssh -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST
-                  ls
+                  chmod 600 cotcRestfulApiKey.pem
+                  ssh -o StrictHostKeyChekcking=no -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST '
+                      ls
+                      '
               env:
                   SECRETSSHKEY: ${{ secrets.SECRETSSHKEY }}
                   SSH_USER: ${{ secrets.SSH_USER }}
