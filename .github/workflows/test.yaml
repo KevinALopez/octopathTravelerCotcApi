@@ -28,7 +28,7 @@ jobs:
                   TESTPASSWORD: ${{ secrets.TESTPASSWORD }}
                   TESTUSER: ${{ secrets.TESTUSER }}
                   PORT: 0
-            - run: npm test
+              run: npm test
     Deployment:
         runs-on: ubuntu-latest
         steps:
