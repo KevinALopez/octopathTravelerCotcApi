@@ -32,14 +32,22 @@ jobs:
     Deployment:
         runs-on: ubuntu-latest
         steps:
-            - name: Connect to ec2 instance
-              run: |
-                  echo $SECRETSSHKEY > cotcRestfulApiKey.pem
-                  chmod 600 cotcRestfulApiKey.pem
-                  ssh -o StrictHostKeyChecking=no -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST '
-                      ls
-                      '
-              env:
-                  SECRETSSHKEY: ${{ secrets.SECRETSSHKEY }}
-                  SSH_USER: ${{ secrets.SSH_USER }}
-                  SSH_HOST: ${{ secrets.SSH_HOST }}
+            - name: executing remote ssh commands using ssh key
+              uses: appleboy/ssh-action@v1.0.3
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USER }}
+                  key: ${{ secrets.SECRETSSHKEY }}
+                  port: 22
+                  script: ls
+            # - name: Connect to ec2 instance
+            #   run: |
+            #       echo $SECRETSSHKEY > cotcRestfulApiKey.pem
+            #       chmod 600 cotcRestfulApiKey.pem
+            #       ssh -o StrictHostKeyChecking=no -i cotcRestfulApiKey.pem $SSH_USER@$SSH_HOST '
+            #           ls
+            #           '
+            #   env:
+            #       SECRETSSHKEY: ${{ secrets.SECRETSSHKEY }}
+            #       SSH_USER: ${{ secrets.SSH_USER }}
+            #       SSH_HOST: ${{ secrets.SSH_HOST }}
