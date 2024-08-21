@@ -15,52 +15,52 @@ beforeEach(() => {
     next = jest.fn();
 });
 
-describe("authController.postSignUp", () => {
-    it("should be a function", () => {
-        expect(typeof authController.postSignUp).toBe("function");
-    });
-    it("should add new user and send confimation response", async () => {
-        //Arrange
-        req.body = mockUser;
-        bcrypt.hash.mockImplementation(() => "encryptedPassword");
-        const newUser = { ...mockUser, password: "encryptedPassword" };
-        const saveSpy = jest.spyOn(User.prototype, "save");
-        saveSpy.mockImplementation(() => newUser);
+// describe("authController.postSignUp", () => {
+//     it("should be a function", () => {
+//         expect(typeof authController.postSignUp).toBe("function");
+//     });
+//     it("should add new user and send confimation response", async () => {
+//         //Arrange
+//         req.body = mockUser;
+//         bcrypt.hash.mockImplementation(() => "encryptedPassword");
+//         const newUser = { ...mockUser, password: "encryptedPassword" };
+//         const saveSpy = jest.spyOn(User.prototype, "save");
+//         saveSpy.mockImplementation(() => newUser);
 
-        //Act
-        await authController.postSignUp(req, res, next);
+//         //Act
+//         await authController.postSignUp(req, res, next);
 
-        //Assert
-        expect(bcrypt.hash).toBeCalledWith(req.body.password, 12);
-        expect(User).toBeCalledWith(newUser);
-        expect(saveSpy).toBeCalled();
-        expect(res.statusCode).toBe(200);
-        expect(res._getJSONData()).toEqual({
-            message: `New user, ${newUser.email} added.`,
-        });
-        expect(res._isEndCalled()).toBeTruthy();
-    });
-    it("should send an error response when save function fails", async () => {
-        //Arrange
-        req.body = mockUser;
-        bcrypt.hash.mockImplementation(() => "encryptedPassword");
-        const newUser = { ...mockUser, password: "encryptedPassword" };
-        const rejectedPromise = Promise.reject({ message: "Error" });
-        const saveSpy = jest.spyOn(User.prototype, "save");
-        saveSpy.mockImplementation(() => rejectedPromise);
+//         //Assert
+//         expect(bcrypt.hash).toBeCalledWith(req.body.password, 12);
+//         expect(User).toBeCalledWith(newUser);
+//         expect(saveSpy).toBeCalled();
+//         expect(res.statusCode).toBe(200);
+//         expect(res._getJSONData()).toEqual({
+//             message: `New user, ${newUser.email} added.`,
+//         });
+//         expect(res._isEndCalled()).toBeTruthy();
+//     });
+//     it("should send an error response when save function fails", async () => {
+//         //Arrange
+//         req.body = mockUser;
+//         bcrypt.hash.mockImplementation(() => "encryptedPassword");
+//         const newUser = { ...mockUser, password: "encryptedPassword" };
+//         const rejectedPromise = Promise.reject({ message: "Error" });
+//         const saveSpy = jest.spyOn(User.prototype, "save");
+//         saveSpy.mockImplementation(() => rejectedPromise);
 
-        //Act
-        await authController.postSignUp(req, res, next);
+//         //Act
+//         await authController.postSignUp(req, res, next);
 
-        //Assert
-        expect(bcrypt.hash).toBeCalledWith(req.body.password, 12);
-        expect(User).toBeCalledWith(newUser);
-        expect(saveSpy).toBeCalled();
-        expect(res.statusCode).toBe(500);
-        expect(res._getJSONData()).toEqual({ message: "Error" });
-        expect(res._isEndCalled()).toBeTruthy();
-    });
-});
+//         //Assert
+//         expect(bcrypt.hash).toBeCalledWith(req.body.password, 12);
+//         expect(User).toBeCalledWith(newUser);
+//         expect(saveSpy).toBeCalled();
+//         expect(res.statusCode).toBe(500);
+//         expect(res._getJSONData()).toEqual({ message: "Error" });
+//         expect(res._isEndCalled()).toBeTruthy();
+//     });
+// });
 
 describe("authController.postLogin", () => {
     it("should be a function", () => {

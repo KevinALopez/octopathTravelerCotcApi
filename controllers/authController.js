@@ -1,23 +1,23 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
-exports.postSignUp = async (req, res, next) => {
-    const encryptedPassword = await bcrypt.hash(req.body.password, 12);
+// exports.postSignUp = async (req, res, next) => {
+//     const encryptedPassword = await bcrypt.hash(req.body.password, 12);
 
-    const user = new User({
-        email: req.body.email,
-        password: encryptedPassword,
-    });
+//     const user = new User({
+//         email: req.body.email,
+//         password: encryptedPassword,
+//     });
 
-    try {
-        const newUser = await user.save();
-        return res
-            .status(200)
-            .json({ message: `New user, ${newUser.email} added.` });
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
+//     try {
+//         const newUser = await user.save();
+//         return res
+//             .status(200)
+//             .json({ message: `New user, ${newUser.email} added.` });
+//     } catch (error) {
+//         return res.status(500).json({ message: error.message });
+//     }
+// };
 
 exports.postLogin = async (req, res, next) => {
     try {

@@ -1,10 +1,13 @@
+require("dotenv").config();
 const session = require("supertest-session");
 const server = require("../../server");
-const User = require("../../models/user");
-const intTestUser = require("../mock-data/mock-userIntTest.json");
 const { default: mongoose } = require("mongoose");
 
 const endpointUrl = "/users/";
+const intTestUser = {
+    email: process.env.TESTUSER,
+    password: process.env.TESTPASSWORD,
+};
 let testSession = null;
 
 beforeAll((done) => {
@@ -13,22 +16,21 @@ beforeAll((done) => {
 });
 
 afterAll(async () => {
-    await User.findOneAndDelete({ email: intTestUser.email });
     await mongoose.connection.close();
     server.appServer.close();
 });
 
 describe(endpointUrl, () => {
-    it(`succesful request on POST ${endpointUrl}signup`, async () => {
-        const response = await testSession
-            .post(endpointUrl + "signup")
-            .send(intTestUser);
+    // it(`succesful request on POST ${endpointUrl}signup`, async () => {
+    //     const response = await testSession
+    //         .post(endpointUrl + "signup")
+    //         .send(intTestUser);
 
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual({
-            message: `New user, ${intTestUser.email} added.`,
-        });
-    }, 15000);
+    //     expect(response.statusCode).toBe(200);
+    //     expect(response.body).toEqual({
+    //         message: `New user, ${intTestUser.email} added.`,
+    //     });
+    // }, 15000);
     it(`succesful request on POST ${endpointUrl}login`, async () => {
         const res = await testSession
             .post(endpointUrl + "login")
@@ -36,7 +38,7 @@ describe(endpointUrl, () => {
 
         expect(res.statusCode).toBe(200);
         expect(res.body).toEqual({ message: "Login succesful!" });
-    });
+    }, 15000);
     it(`should logout on succesful GET ${endpointUrl}logout`, async () => {
         const res = await testSession.get(endpointUrl + "logout");
 

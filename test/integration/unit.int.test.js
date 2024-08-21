@@ -38,7 +38,6 @@ describe(endpointUrl, () => {
     });
     it(`succesful request on GET ${endpointUrl}:id`, async () => {
         const response = await testSession.get(`${endpointUrl}${mockUnitId}`);
-        console.log(response.body);
         expect(response.statusCode).toBe(200);
         expect(response.body).toMatchObject({
             _id: mockUnitId,

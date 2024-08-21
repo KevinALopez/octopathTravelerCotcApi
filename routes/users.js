@@ -3,9 +3,9 @@ const router = express.Router();
 const userController = require("../controllers/authController");
 const authMiddleware = require("../middlewares/auth");
 
-router.post("/signup", async (req, res) => {
-    await userController.postSignUp(req, res);
-});
+// router.post("/signup", async (req, res) => {
+//     await userController.postSignUp(req, res);
+// });
 
 router.post("/login", userController.getUserByEmail, async (req, res) => {
     await userController.postLogin(req, res);
