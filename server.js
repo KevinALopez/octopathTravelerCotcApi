@@ -3,7 +3,15 @@ const mongoConnect = require("./utils/mongoDatabase");
 const express = require("express");
 const session = require("express-session");
 const app = express();
+const cors = require("cors");
 const port = process.env.PORT;
+
+var corsOptions = {
+    origin: ["http://cotcteamhelper.com", "http://localhost:5173"],
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(
