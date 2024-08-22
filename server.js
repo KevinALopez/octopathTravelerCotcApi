@@ -9,6 +9,7 @@ const port = process.env.PORT;
 var corsOptions = {
     origin: ["http://cotcteamhelper.com", "http://localhost:5173"],
     optionsSuccessStatus: 200,
+    withCredentials: true,
 };
 
 app.use(cors(corsOptions));
