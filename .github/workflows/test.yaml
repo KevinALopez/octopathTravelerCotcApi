@@ -43,4 +43,5 @@ jobs:
                   script: |
                       cd octopathTravelerCotcApi
                       git pull
+                      npm ci
                       sudo systemctl restart cotcApi.service
