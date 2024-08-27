@@ -300,6 +300,10 @@ const unitSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    mainElement: {
+        type: String,
+        required: true,
+    },
     class: {
         type: String,
         required: true,
