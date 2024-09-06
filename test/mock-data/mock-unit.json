@@ -119,7 +119,7 @@
             "unlockAt": "3star",
             "description": "[Priority] Inflict AoE Dark Weakness Implant for 2-5 hits, based on Boost Lv., then swap to Back Row",
             "spCost": 46,
-            "level88SpCost": 37,
+            "level88Upgrade": "39",
             "skillInfo": {
                 "type": ["debuff"],
                 "effects": ["darkImplant", "self-priority"]
@@ -130,7 +130,7 @@
             "unlockAt": "4star",
             "description": "2x AoE Dark, also hits Dagger weakness, if Boost MAX, 4 hits instead (2~4x 95~110 Power)",
             "spCost": 53,
-            "level96SpCost": 42,
+            "level96Upgrade": "39",
             "weaknessExploited": ["dark", "dagger"],
             "skillInfo": {
                 "type": ["damage"]
@@ -143,7 +143,7 @@
             "has6StarUpgrade": true,
             "upgrade": "Changed to 6 hits",
             "spCost": 49,
-            "level99SpCost": 39,
+            "level99Upgrade": "39",
             "weaknessExploited": ["dark", "dagger"],
             "skillInfo": {
                 "type": ["damage"]
@@ -154,7 +154,7 @@
             "unlockAt": "5star",
             "description": "Single-Enemy Dark Weakness Implant for 3 hits, then 3x single-target Dark (3x 95~160 Power).If Boost MAX, repeat this attack once.",
             "spCost": 87,
-            "level100SpCost": 70,
+            "level100Upgrade": "70",
             "weaknessExploited": ["dark"],
             "skillInfo": {
                 "type": ["damage", "debuff"],

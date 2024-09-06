@@ -155,17 +155,17 @@ const skillSchema = mongoose.Schema({
     spCost: {
         type: Number,
     },
-    level88SpCost: {
-        type: Number,
+    level88Upgrade: {
+        type: String,
     },
-    level96SpCost: {
-        type: Number,
+    level96Upgrade: {
+        type: String,
     },
-    level99SpCost: {
-        type: Number,
+    level99Upgrade: {
+        type: String,
     },
-    level100SpCost: {
-        type: Number,
+    level100Upgrade: {
+        type: String,
     },
     weaknessExploited: {
         type: [String],
